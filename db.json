@@ -1,74 +1,28 @@
 {
   "user": [
     {
-      "id": "f72d",
-      "name": "Aryan uppdare",
-      "email": "rajesh@gmaill.com",
-      "phone": "1564564156"
-    },
-    {
-      "id": "c22a",
-      "name": "rajesh",
-      "email": "rajesh@gmaill.com",
-      "phone": "0123456789"
-    },
-    {
-      "id": "b024",
+      "id": "25ed",
       "name": "Aryan",
-      "email": "rajesh@gmaill.com",
-      "phone": "0123456789"
-    },
-    {
-      "id": "19bf",
-      "name": "rajesh",
-      "email": "tejash@gmail.com",
-      "phone": "1564564156"
-    },
-    {
-      "id": "8ee0",
-      "name": "nihar",
-      "email": "valaaryan22@gmail.com",
-      "phone": "1234567895"
-    },
-    {
-      "id": "02c0",
-      "name": "Vala Aryan",
-      "email": "tejash@gmail.com",
-      "phone": "7359354322"
-    },
-    {
-      "id": "bd89",
-      "name": "Aryan uppdare",
-      "email": "rajesh@gmaill.com",
-      "phone": "7359354322"
-    },
-    {
-      "id": "98fe",
-      "name": "Aryan uppdare",
-      "email": "das@gamil.com",
-      "phone": "1234567895"
-    },
-    {
-      "id": "28a9",
-      "name": "Aryan uppdare",
-      "email": "Aryan@gmail.com",
+      "email": "valaaryan@gmail.com",
+      "password": "12345678",
+      "conform_password": "12345678",
       "phone": "1234567890"
     },
     {
-      "id": "c79a",
-      "name": "Vala Aryan Jagmalbhai",
+      "id": "baa6",
+      "name": "Aryan vala",
       "email": "valaaryan22@gmail.com",
       "password": "12345678",
       "conform_password": "12345678",
-      "phone": "1234567891"
+      "phone": "8140525234"
     },
     {
-      "id": "3764",
-      "name": "Vala Aryan Jagmalbhai2",
+      "id": "bc89",
+      "name": "Aryan",
       "email": "valaaryan22@gmail.com",
-      "password": "12345678",
-      "conform_password": "12345678",
-      "phone": "1234567891"
+      "password": "11111111",
+      "conform_password": "11111111",
+      "phone": "1234567890"
     }
   ]
 }
