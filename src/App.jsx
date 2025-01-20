@@ -1,33 +1,55 @@
+import { useEffect } from "react";
+import "react-image-crop/dist/ReactCrop.css";
 import { Provider } from 'react-redux';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-// import Create from "./Create";
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import Create from "./Create";
 import Home from "./Home";
 import Login from './Login';
 import Read from "./Read";
+import store from './redux/store';
 import Register from "./Register";
 import Update from "./Update";
-import store from './redux/store';
-
 
 function App() {
   return (
     <>
-   
-   <Provider store={store}>
-   <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          {/* <Route path="/create" element={<Create />} /> */}
-          <Route path="/update/:id" element={<Update/>} />
-          <Route path="/read/:id" element={<Read />} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/login" element={<Login/>} />
-
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <BlockNavigation />
+          <Routes>
+            <Route path="/" exact element={<Login />} />
+            <Route path="/create" exact element={<Create />} />
+            <Route path="/update/:id" exact element={<Update />} />
+            <Route path="/read/:id" exact element={<Read />} />
+            <Route path="/register" exact element={<Register />} />
+            <Route path="/home" exact element={<Home />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </>
   );
+}
+
+function BlockNavigation() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      const handlePopState = (event) => {
+        event.preventDefault();
+        navigate("/", { replace: true }); 
+      };
+
+      window.addEventListener("popstate", handlePopState);
+
+      return () => {
+        window.removeEventListener("popstate", handlePopState);
+      };
+    }
+  }, [location, navigate]);
+
+  return null;
 }
 
 export default App;

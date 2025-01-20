@@ -10,8 +10,8 @@ import { Label } from "@/components/ui/label";
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { signUpSchema } from "./schemas";   
 import { createUser } from './redux/userSlice';
+import { signUpSchema } from "./schemas";
 
 function Register() {
     const navigate = useNavigate();
@@ -129,7 +129,7 @@ function Register() {
                                 <table>
                                     <tr>
                                         <td className={tableCellCss}>
-                                            <button className={buttonCss} onClick={() => navigate('/')}>Home</button>
+                                            <button className={buttonCss} onClick={() => navigate('/')}>Login</button>
                                         </td>
                                         <td className={tableCellCss}>
                                             <button type="submit" className={buttonCss}>Submit</button>

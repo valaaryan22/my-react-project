@@ -1,28 +1,44 @@
 {
   "user": [
     {
-      "id": "25ed",
-      "name": "Aryan",
-      "email": "valaaryan@gmail.com",
+      "id": "f450",
+      "name": "admin",
+      "email": "admin@gmail.com",
       "password": "12345678",
       "conform_password": "12345678",
       "phone": "1234567890"
     },
     {
-      "id": "baa6",
-      "name": "Aryan vala",
-      "email": "valaaryan22@gmail.com",
+      "id": "b934",
+      "name": "john",
+      "email": "john@gmail.com",
       "password": "12345678",
       "conform_password": "12345678",
-      "phone": "8140525234"
+      "phone": "1234567890"
     },
     {
-      "id": "bc89",
-      "name": "Aryan",
-      "email": "valaaryan22@gmail.com",
-      "password": "11111111",
-      "conform_password": "11111111",
+      "id": "405f",
+      "name": "Aryan Vala",
+      "email": "Aryann@gmail.com",
+      "password": "12345678",
+      "conform_password": "12345678",
       "phone": "1234567890"
+    },
+    {
+      "id": "935b",
+      "name": "Aryan2",
+      "email": "valaaryan22@gmail.com",
+      "password": "123456",
+      "conform_password": "123456",
+      "phone": "1234567890"
+    },
+    {
+      "id": "59dd",
+      "name": "Vala Aryan Jagmalbhai",
+      "email": "Badalbarad15@gmail.com",
+      "password": "123123",
+      "conform_password": "123123",
+      "phone": "1234564122"
     }
   ]
 }

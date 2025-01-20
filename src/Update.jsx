@@ -384,7 +384,7 @@ function Update() {
                 .put(`http://localhost:3000/user/${id}`, values)
                 .then((response) => {
                     console.log(response.data);
-                    navigate("/");
+                    navigate("/home");
                     window.location.reload();
                 })
                 .catch((err) => console.error(err));
@@ -394,7 +394,7 @@ function Update() {
     };
 
     const handleBackHome = () => {
-        navigate("/");
+        navigate("/home");
     };
 
     const formCss = "bg-gray-50 p-8 rounded-lg shadow-md max-w-lg mx-auto";
