@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import "react-image-crop/dist/ReactCrop.css";
-import { Provider } from 'react-redux';
+import { Provider } from "react-redux";
 import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import Create from "./Create";
 import Home from "./Home";
-import Login from './Login';
+import Login from "./Login";
+import NotFound from "./NotFound";
 import Read from "./Read";
-import store from './redux/store';
+import store from "./redux/store";
 import Register from "./Register";
 import Update from "./Update";
 
@@ -23,6 +24,7 @@ function App() {
             <Route path="/read/:id" exact element={<Read />} />
             <Route path="/register" exact element={<Register />} />
             <Route path="/home" exact element={<Home />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </Provider>
@@ -38,7 +40,7 @@ function BlockNavigation() {
     if (location.pathname === "/") {
       const handlePopState = (event) => {
         event.preventDefault();
-        navigate("/", { replace: true }); 
+        navigate("/register", { replace: true });
       };
 
       window.addEventListener("popstate", handlePopState);

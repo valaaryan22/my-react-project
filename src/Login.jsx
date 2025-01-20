@@ -7,9 +7,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axiosHttp from "./utils/axios";
 
 function Login() {
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ function Login() {
 
     // Fetch user data on component mount
     useEffect(() => {
-        axios.get("http://localhost:3000/user")
+        axiosHttp.get("http://localhost:3000/user")
             .then(response => setUsers(response.data))
             .catch(err => console.error("Error fetching users:", err));
     }, []);

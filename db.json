@@ -1,14 +1,6 @@
 {
   "user": [
     {
-      "id": "f450",
-      "name": "admin",
-      "email": "admin@gmail.com",
-      "password": "12345678",
-      "conform_password": "12345678",
-      "phone": "1234567890"
-    },
-    {
       "id": "b934",
       "name": "john",
       "email": "john@gmail.com",
@@ -39,6 +31,30 @@
       "password": "123123",
       "conform_password": "123123",
       "phone": "1234564122"
+    },
+    {
+      "id": "0b16",
+      "name": "pratik",
+      "email": "pratik@gmail.com",
+      "password": "pratik",
+      "conform_password": "pratik",
+      "phone": "7575757575"
+    },
+    {
+      "id": "cc5c",
+      "name": "tejash",
+      "email": "tejash@gmail.com",
+      "password": "123456",
+      "conform_password": "123456",
+      "phone": "1234567890"
+    },
+    {
+      "id": "7fb6",
+      "name": "aryan3",
+      "email": "aryan2@gmail.com",
+      "password": "123123",
+      "conform_password": "123123",
+      "phone": "1234567890"
     }
   ]
 }

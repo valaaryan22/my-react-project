@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-
+import axiosHttp from "../utils/axios";
 export const createUser = (userData) => async (dispatch) => {
     try {
-        const response = await axios.post("http://localhost:3000/user", userData);
+        const response = await axiosHttp.post("http://localhost:3000/user", userData);
         dispatch(userCreated(response.data));
     } catch (error) {
         console.error("Error creating user", error);
@@ -13,7 +12,7 @@ export const createUser = (userData) => async (dispatch) => {
 
 export const deleteUser = (userId) => async (dispatch) => {
     try {
-        await axios.delete(`http://localhost:3000/user/${userId}`);
+        await axiosHttp.delete(`http://localhost:3000/user/${userId}`);
         dispatch(userDeleted(userId));
     } catch (error) {
         console.error("Error deleting user", error);

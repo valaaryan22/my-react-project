@@ -12,7 +12,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { createUser } from './redux/userSlice';
 import { signUpSchema } from "./schemas";
-
 function Register() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
