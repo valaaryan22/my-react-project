@@ -10,7 +10,6 @@ import Read from "./Read";
 import store from "./redux/store";
 import Register from "./Register";
 import Update from "./Update";
-
 function App() {
   return (
     <>
@@ -23,7 +22,7 @@ function App() {
             <Route path="/update/:id" exact element={<Update />} />
             <Route path="/read/:id" exact element={<Read />} />
             <Route path="/register" exact element={<Register />} />
-            <Route path="/home" exact element={<Home />} />
+            <Route path="/home"  element={<Home />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

@@ -10,6 +10,7 @@ const Profile = () => {
 
   const updateAvatar = (imgSrc) => {
     avatarUrl.current = imgSrc;
+    console.log(avatarUrl.current)
   };
 
   return (
@@ -18,7 +19,7 @@ const Profile = () => {
         <img
           src={avatarUrl.current}
           alt="Avatar"
-          className="w-[90px] h-[90px] rounded-full border-2 border-gray-400"
+          className="w-[120px] h-[120px] rounded-full border-2 border-gray-400"
         />
         <button
           className="absolute -bottom-3 left-0 right-0 m-auto w-fit p-[.35rem] rounded-full bg-gray-800 hover:bg-gray-700 border border-gray-600"
