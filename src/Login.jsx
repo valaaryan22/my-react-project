@@ -18,14 +18,12 @@ function Login() {
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Fetch user data on component mount
     useEffect(() => {
-        axiosHttp.get("http://localhost:3000/user")
+        axiosHttp.get("/user")
             .then(response => setUsers(response.data))
             .catch(err => console.error("Error fetching users:", err));
     }, []);
 
-    // Validation logic
     const validateForm = () => {
         const errors = {};
         if (!formValues.email) {
@@ -43,14 +41,12 @@ function Login() {
         return errors;
     };
 
-    // Handle form input changes
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormValues({ ...formValues, [name]: value });
-        setErrors({ ...errors, [name]: "" }); // Clear error for the specific field
+        setErrors({ ...errors, [name]: "" }); 
     };
 
-    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         const validationErrors = validateForm();
@@ -102,7 +98,6 @@ function Login() {
                             )}
                         </div>
 
-                        {/* Password Field */}
                         <div className="mb-6">
                             <Label htmlFor="password" className="block text-gray-700 font-medium mb-2">
                                 Password:
@@ -121,7 +116,6 @@ function Login() {
                             )}
                         </div>
 
-                        {/* Submit Button */}
                         <div className="mt-4">
                             <button
                                 type="submit"
@@ -136,7 +130,6 @@ function Login() {
                             </button>
                         </div>
 
-                        {/* Register Link */}
                         <div className="text-center mt-4">
                             <p className="text-sm text-gray-700">
                                 Don't have an account?{" "}

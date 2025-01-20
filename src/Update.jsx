@@ -7,9 +7,9 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import axiosHttp from "./utils/axios";
 
 function Update() {
     const [values, setValues] = useState({
@@ -22,8 +22,8 @@ function Update() {
     const { id } = useParams();
 
     useEffect(() => {
-        axios
-            .get(`http://localhost:3000/user/${id}`)
+        axiosHttp
+            .get(`/user/${id}`)
             .then((response) => setValues(response.data))
             .catch((err) => console.error(err));
     }, [id]);
@@ -53,8 +53,8 @@ function Update() {
         event.preventDefault();
 
         if (validate()) {
-            axios
-                .put(`http://localhost:3000/user/${id}`, values)
+            axiosHttp
+                .put(`/user/${id}`, values)
                 .then((response) => {
                     console.log(response.data);
                     navigate("/home");

@@ -19,7 +19,6 @@ function Home() {
     const [userIdToDelete, setUserIdToDelete] = useState(null);
     const [openDropdown, setOpenDropdown] = useState(null); // Track dropdown for each user
 
-    // Fetch data from API
     useEffect(() => {
         axios.get("http://localhost:3000/user")
             .then(response => setData(response.data))
