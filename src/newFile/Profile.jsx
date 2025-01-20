@@ -29,7 +29,6 @@ const Profile = () => {
         </button>
       </div>
       <h2 className="text-white font-bold mt-6">Mack Aroney</h2>
-      <p className="text-gray-500 text-xs mt-2">Software Engineer</p>
       {modalOpen && (
         <Modal
           updateAvatar={updateAvatar}
