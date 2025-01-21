@@ -1,68 +1,28 @@
 {
   "user": [
     {
-      "id": "b934",
-      "name": "john",
-      "email": "john@gmail.com",
-      "password": "12345678",
-      "conform_password": "12345678",
-      "phone": "1234567890"
-    },
-    {
-      "id": "405f",
-      "name": "Aryan Vala",
-      "email": "Aryann@gmail.com",
-      "password": "12345678",
-      "conform_password": "12345678",
-      "phone": "1234567890"
-    },
-    {
-      "id": "935b",
+      "id": "0399",
       "name": "Aryan2",
-      "email": "valaaryan22@gmail.com",
-      "password": "123456",
-      "conform_password": "123456",
-      "phone": "1234567890"
-    },
-    {
-      "id": "59dd",
-      "name": "Vala Aryan Jagmalbhai",
-      "email": "Badalbarad15@gmail.com",
-      "password": "123123",
-      "conform_password": "123123",
-      "phone": "1234564122"
-    },
-    {
-      "id": "0b16",
-      "name": "pratik",
-      "email": "pratik@gmail.com",
-      "password": "pratik",
-      "conform_password": "pratik",
-      "phone": "7575757575"
-    },
-    {
-      "id": "cc5c",
-      "name": "tejash",
-      "email": "tejash@gmail.com",
-      "password": "123456",
-      "conform_password": "123456",
-      "phone": "1234567890"
-    },
-    {
-      "id": "7fb6",
-      "name": "aryan3",
-      "email": "aryan2@gmail.com",
+      "email": "Aryan@gmail.com",
       "password": "123123",
       "conform_password": "123123",
       "phone": "1234567890"
     },
     {
-      "id": "92de",
-      "name": "Aryan4",
-      "email": "aryan4@gmail.com",
+      "id": "dd99",
+      "name": "Aryan2",
+      "email": "aryan222@gmail.com",
       "password": "123123",
       "conform_password": "123123",
-      "phone": "1231231230"
+      "phone": "1234567890"
+    },
+    {
+      "id": "94ff",
+      "name": "Aryan2",
+      "email": "aryan222@gmail.com",
+      "password": "123123",
+      "conform_password": "123123",
+      "phone": "1234567890"
     }
   ]
 }

@@ -1,4 +1,3 @@
-
 import {
     AlertDialog,
     AlertDialogAction,
@@ -11,26 +10,29 @@ import {
     AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Profile from "./newFile/Profile";
-import axiosHttp from "./utils/axios"; 
+import axiosHttp from "./utils/axios";
 
 function Home() {
     const [data, setData] = useState([]);
     const [userIdToDelete, setUserIdToDelete] = useState(null);
     const [openDropdown, setOpenDropdown] = useState(null);
-
+    const navigate = useNavigate()
     useEffect(() => {
         axiosHttp
-            .get("/user") 
+            .get("/user")
             .then((response) => setData(response.data))
             .catch((err) => console.log(err));
     }, []);
-
+    const handleLogout = () => {
+        localStorage.removeItem("log");  // Clear the authentication token
+        navigate("/");  // Redirect to the login page
+    };
     const handleDelete = () => {
         if (userIdToDelete) {
             axiosHttp
-                .delete(`/user/${userIdToDelete}`) 
+                .delete(`/user/${userIdToDelete}`)
                 .then(() => {
                     setData((prevData) =>
                         prevData.filter((user) => user.id !== userIdToDelete)
@@ -48,6 +50,7 @@ function Home() {
 
     return (
         <div className="p-8 bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen">
+
             <header className="text-center mb-8">
                 <h1 className="text-3xl font-bold text-gray-800">
                     User Management System
@@ -170,6 +173,7 @@ function Home() {
             <div className="text-left mt-6">
                 <Link
                     to="/"
+                    onClick={handleLogout}
                     className="bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-2 rounded-lg shadow hover:from-red-600 hover:to-pink-600 focus:ring-4 focus:ring-red-300 transition-all"
                 >
                     Logout

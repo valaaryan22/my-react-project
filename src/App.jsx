@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import "react-image-crop/dist/ReactCrop.css";
 import { Provider } from "react-redux";
-import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Create from "./Create";
 import Home from "./Home";
 import Login from "./Login";
@@ -11,46 +11,35 @@ import store from "./redux/store";
 import Register from "./Register";
 import Update from "./Update";
 function App() {
+  
   return (
-    <>
-      <Provider store={store}>
-        <BrowserRouter>
-          <BlockNavigation />
-          <Routes>
-            <Route path="/" exact element={<Login />} />
-            <Route path="/create" exact element={<Create />} />
-            <Route path="/update/:id" exact element={<Update />} />
-            <Route path="/read/:id" exact element={<Read />} />
-            <Route path="/register" exact element={<Register />} />
-            <Route path="/home"  element={<Home />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </Provider>
-    </>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/home" element={<ProtectedRoute Component={Home} />} />
+          <Route path="/create" element={<ProtectedRoute Component={Create} />} />
+          <Route path="/update/:id" element={<ProtectedRoute Component={Update} />} />
+          <Route path="/read/:id" element={<ProtectedRoute Component={Read} />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
+   
   );
 }
-
-function BlockNavigation() {
+function ProtectedRoute({ Component }) {
   const navigate = useNavigate();
-  const location = useLocation();
-
   useEffect(() => {
-    if (location.pathname === "/") {
-      const handlePopState = (event) => {
-        event.preventDefault();
-        navigate("/register", { replace: true });
-      };
-
-      window.addEventListener("popstate", handlePopState);
-
-      return () => {
-        window.removeEventListener("popstate", handlePopState);
-      };
+    const token = localStorage.getItem("log");
+    if (!token) {
+      alert("You must be logged in to access this page.");
+      navigate("/", { replace: true });
     }
-  }, [location, navigate]);
+  }, [navigate]);
 
-  return null;
+  return <Component />;
 }
 
 export default App;

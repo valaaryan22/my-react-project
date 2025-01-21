@@ -7,28 +7,38 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
 import { useFormik } from 'formik';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
-import { createUser } from './redux/userSlice';
+import { createEvent } from './redux/eventSlice'; // Assuming you have this Redux slice for event creation
 import { signUpSchema } from "./schemas";
 
 function Create() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const [images, setImages] = useState([]);
+    const [editorData, setEditorData] = useState('');
+
     const { values, errors, touched, handleBlur, handleChange, handleSubmit } = useFormik({
         initialValues: {
-            name: '',
-            email: '',
-            password: '',
-            conform_password: '',
-            phone: ''
+            title: '',
+            description: '',
+            images: [],
         },
-        validationSchema: signUpSchema,
+        validationSchema: signUpSchema,  // You can create a custom schema for event form validation
         onSubmit: async (values, action) => {
             try {
-                await dispatch(createUser(values));
+                const formData = new FormData();
+                formData.append('title', values.title);
+                formData.append('description', editorData);
+                images.forEach((image, index) => {
+                    formData.append(`images[${index}]`, image);
+                });
+                await dispatch(createEvent(formData)); // Assume you're handling form submission with Redux
                 navigate('/home');
                 window.location.reload(); 
             } catch (err) {
@@ -44,85 +54,80 @@ function Create() {
     const buttonCss = "w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 transition duration-200";
     const tableCellCss = "px-3 py-2";
 
+    const handleImageChange = (e) => {
+        const selectedImages = Array.from(e.target.files).slice(0, 5);  // Limit to 5 images
+        setImages(selectedImages);
+    };
+
     return (
         <>
             <Card className="border border-gray-200 shadow-2xl rounded-lg mx-auto mt-10 max-w-3xl">
                 <CardHeader className="text-center bg-gradient-to-r from-blue-500 to-blue-700 py-4 rounded-t-lg">
                     <CardTitle>
-                        <h1 className="text-2xl font-bold text-white">Create User</h1>
+                        <h1 className="text-2xl font-bold text-white">Create Event</h1>
                     </CardTitle>
                 </CardHeader>
                 <CardContent>
                     <div className="container mx-auto py-8">
                         <form className={formCss} onSubmit={handleSubmit}>
                             <div className="mb-6">
-                                <Label className={labelCss} htmlFor="name">Name:</Label>
+                                <Label className={labelCss} htmlFor="title">Event Title:</Label>
                                 <Input
                                     className={inputCss}
                                     type="text"
-                                    name="name"
-                                    value={values.name}
-                                    placeholder="Enter Name"
+                                    name="title"
+                                    value={values.title}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
+                                    placeholder="Enter Event Title"
                                 />
-                                {errors.name && touched.name ? <p className="text-red-800">{errors.name}</p> : null}
+                                {errors.title && touched.title ? <p className="text-red-800">{errors.title}</p> : null}
                             </div>
 
                             <div className="mb-6">
-                                <Label className={labelCss} htmlFor="password">Password:</Label>
-                                <Input
-                                    className={inputCss}
-                                    type="password"
-                                    name="password"
-                                    value={values.password}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    placeholder="Enter Password"
+                                <Label className={labelCss} htmlFor="description">Event Description:</Label>
+                                <CKEditor
+                                    editor={ClassicEditor}
+                                    data={editorData}
+                                    onChange={(event, editor) => {
+                                        setEditorData(editor.getData());
+                                    }}
+                                    config={{
+                                        toolbar: [
+                                            'bold', 'italic', 'underline', 'link', 'bulletedList', 'numberedList',
+                                            'blockQuote', 'insertTable', 'imageUpload'
+                                        ],
+                                    }}
                                 />
-                                {errors.password && touched.password ? <p className="text-red-800">{errors.password}</p> : null}
+                                {errors.description && touched.description ? <p className="text-red-800">{errors.description}</p> : null}
                             </div>
 
                             <div className="mb-6">
-                                <Label className={labelCss} htmlFor="conform_password">Confirm Password:</Label>
-                                <Input
-                                    className={inputCss}
-                                    type="password"
-                                    name="conform_password"
-                                    value={values.conform_password}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    placeholder="Confirm Password"
+                                <Label className={labelCss} htmlFor="images">Event Images:</Label>
+                                <input
+                                    type="file"
+                                    multiple
+                                    accept="image/jpeg, image/png"
+                                    onChange={handleImageChange}
                                 />
-                                {errors.conform_password && touched.conform_password ? <p className="text-red-800">{errors.conform_password}</p> : null}
-                            </div>
-
-                            <div className="mb-6">
-                                <Label className={labelCss} htmlFor="email">Email:</Label>
-                                <Input
-                                    className={inputCss}
-                                    type="email"
-                                    name="email"
-                                    value={values.email}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    placeholder="Enter Email"
-                                />
-                                {errors.email && touched.email ? <p className="text-red-800">{errors.email}</p> : null}
-                            </div>
-
-                            <div className="mb-6">
-                                <Label className={labelCss} htmlFor="phone">Phone:</Label>
-                                <Input
-                                    className={inputCss}
-                                    type="tel"
-                                    name="phone"
-                                    value={values.phone}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    placeholder="Enter Phone Number"
-                                />
-                                {errors.phone && touched.phone ? <p className="text-red-800">{errors.phone}</p> : null}
+                                {images.length > 0 && (
+                                    <div className="mt-4">
+                                        <h3>Selected Images:</h3>
+                                        <ul>
+                                            {images.map((image, index) => (
+                                                <li key={index}>
+                                                    <img src={URL.createObjectURL(image)} alt={`image-${index}`} width="100" />
+                                                    <input
+                                                        type="text"
+                                                        name={`caption[${index}]`}
+                                                        placeholder={`Caption for image ${index + 1}`}
+                                                        className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg"
+                                                    />
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
                             </div>
 
                             <div className="flex justify-center">

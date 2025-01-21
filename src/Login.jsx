@@ -61,6 +61,7 @@ function Login() {
         );
 
         if (user) {
+            localStorage.setItem("log",true)
             alert(`Welcome, ${user.name}!`);
             navigate("/home");
         } else {
