@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000"; // Replace with your actual API URL
+const API_URL = "https://server-1-pwpn.onrender.com"; // Replace with your actual API URL
 
 const axiosHttp = axios.create({
     baseURL: `${API_URL}`,

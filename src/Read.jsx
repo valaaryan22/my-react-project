@@ -18,7 +18,7 @@ function Read() {
 
     useEffect(() => {
         axiosHttp
-            .get("http://localhost:3000/user/" + id)
+            .get("/user/" + id)
             .then(response => setData(response.data))
             .catch(err => console.log(err));
     }, [id]);
