@@ -67,7 +67,7 @@ function Login() {
         } else {
             alert("Invalid email or password. Please try again.");
         }
-        setIsSubmitting(false);
+        setIsSubmitting(false)
     };
 
     return (
